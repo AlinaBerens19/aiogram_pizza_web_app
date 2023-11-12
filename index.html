@@ -29,17 +29,42 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
     <script>
+
+        var tg = window.Telegram.WebApp;
+        tg.expand();
+
+        let submit_data = document.getElementById('submit_user_data');
+
         function closeForm() {
             var overlay = document.getElementById("overlay");
             overlay.style.display = "none";
         }
-        
+
 
         document.addEventListener("DOMContentLoaded", function () {
             var overlay = document.getElementById("overlay");
             document.getElementById("name").value = tg.initDataUnsafe.user.first_name + " " + tg.initDataUnsafe.user.last_name;
-            document.getElementById("phone").value = tg.initDataUnsafe.user.phone_number;
-            <!-- overlay.style.display = "flex"; -->
+        });
+
+        submit_data.addEventListener('click', function () {
+            document.getElementById("error").value = "";
+            var name = document.getElementById("name").value;
+            var address = document.getElementById("address").value;
+            var phone = document.getElementById("phone").value;
+            if (name == "" || address == "" || phone == "") {
+                document.getElementById("error").value = "Please fill all the fields";
+                return;
+            }
+            var message = "Name: " + name + "\n" + "Address: " + address + "\n" + "Phone: " + phone;
+            
+            let data = {
+                name: name,
+                address: address,
+                phone: phone
+            }
+
+            tg.sendData(JSON.stringify(data));
+             tg.close();
         });
 
         function submitForm() {
@@ -47,9 +72,7 @@
             var overlay = document.getElementById("overlay");
             overlay.style.display = "none";
         }
-    </script>
 
-    <script>
         // Pizza data
         const pizzas = [
             {
@@ -66,8 +89,6 @@
             }
             // Add more pizzas as needed
         ];
-
-        var tg = window.Telegram.WebApp;
 
         // Loop through pizzas and create pizza cards
         for (const pizza of pizzas) {

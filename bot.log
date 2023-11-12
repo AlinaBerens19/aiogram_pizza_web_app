@@ -12,3 +12,33 @@ INFO:apscheduler.scheduler:Scheduler started
 INFO:aiogram.dispatcher:Start polling
 INFO:aiogram.dispatcher:Run polling for bot @yummi_pizza_bot id=6515055353 - 'Pizza Bot'
 INFO:aiogram.event:Update id=494919382 is handled. Duration 405 ms by bot id=6515055353
+INFO:apscheduler.scheduler:Scheduler started
+INFO:aiogram.dispatcher:Start polling
+INFO:aiogram.dispatcher:Run polling for bot @yummi_pizza_bot id=6515055353 - 'Pizza Bot'
+INFO:apscheduler.scheduler:Scheduler started
+INFO:aiogram.dispatcher:Start polling
+INFO:aiogram.dispatcher:Run polling for bot @yummi_pizza_bot id=6515055353 - 'Pizza Bot'
+INFO:aiogram.event:Update id=494919383 is handled. Duration 265 ms by bot id=6515055353
+INFO:apscheduler.scheduler:Scheduler started
+INFO:aiogram.dispatcher:Start polling
+INFO:aiogram.dispatcher:Run polling for bot @yummi_pizza_bot id=6515055353 - 'Pizza Bot'
+INFO:apscheduler.scheduler:Scheduler started
+INFO:aiogram.dispatcher:Start polling
+INFO:aiogram.dispatcher:Run polling for bot @yummi_pizza_bot id=6515055353 - 'Pizza Bot'
+INFO:aiogram.event:Update id=494919384 is handled. Duration 15 ms by bot id=6515055353
+INFO:apscheduler.scheduler:Scheduler started
+INFO:aiogram.dispatcher:Start polling
+INFO:aiogram.dispatcher:Run polling for bot @yummi_pizza_bot id=6515055353 - 'Pizza Bot'
+INFO:aiogram.event:Update id=494919385 is handled. Duration 0 ms by bot id=6515055353
+INFO:apscheduler.scheduler:Scheduler started
+INFO:aiogram.dispatcher:Start polling
+INFO:aiogram.dispatcher:Run polling for bot @yummi_pizza_bot id=6515055353 - 'Pizza Bot'
+INFO:aiogram.event:Update id=494919386 is handled. Duration 296 ms by bot id=6515055353
+INFO:apscheduler.scheduler:Scheduler started
+INFO:aiogram.dispatcher:Start polling
+INFO:aiogram.dispatcher:Run polling for bot @yummi_pizza_bot id=6515055353 - 'Pizza Bot'
+INFO:aiogram.event:Update id=494919387 is handled. Duration 15 ms by bot id=6515055353
+INFO:apscheduler.scheduler:Scheduler started
+INFO:aiogram.dispatcher:Start polling
+INFO:aiogram.dispatcher:Run polling for bot @yummi_pizza_bot id=6515055353 - 'Pizza Bot'
+INFO:aiogram.event:Update id=494919388 is handled. Duration 280 ms by bot id=6515055353

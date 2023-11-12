@@ -14,6 +14,13 @@ def get_the_menu(id: str = None) -> InlineKeyboardMarkup:
     return keyboard_builder.as_markup()
 
 
+# def get_web_app() -> InlineKeyboardMarkup:
+#     keyboard_builder = InlineKeyboardBuilder()
+#     keyboard_builder.add(InlineKeyboardButton(text='Order', web_app=WebAppInfo(url='https://alinaberens19.github.io/aiogram_pizza_web_app/')))
+#     keyboard_builder.adjust()
+#     return keyboard_builder.as_markup()
+
+
 def get_web_app():
     markup = types.ReplyKeyboardMarkup(keyboard=
         [
