@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-   
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yummi Pizza</title>
     <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=API_KEY&libraries=places"></script>
-
 </head>
+
 <body>
     <header>
         Yummi Pizza
@@ -53,60 +52,61 @@
             {
                 id: 'margherita',
                 name: "Margherita Pizza",
-                ingredients: "Tomato Sauce, Mozzarella Cheese, Basil"
+                ingredients: "Tomato Sauce, Mozzarella Cheese, Basil",
+                src: 'https://cdn.pixabay.com/photo/2021/11/19/13/56/pizza-6809541_1280.jpg'
             },
             {
                 id: 'pepperoni',
                 name: "Pepperoni Pizza",
-                ingredients: "Tomato Sauce, Mozzarella Cheese, Pepperoni"
+                ingredients: "Tomato Sauce, Mozzarella Cheese, Pepperoni",
+                src: 'https://cdn.pixabay.com/photo/2023/04/24/10/34/pizza-7947763_1280.jpg'
             }
             // Add more pizzas as needed
         ];
 
         var tg = window.Telegram.WebApp;
-        var overlay = document.getElementById("overlay");
 
         // Loop through pizzas and create pizza cards
         for (const pizza of pizzas) {
-            document.write(`
-                <div class="pizza-card">
-                    <img class="pizza-image" src="https://via.placeholder.com/300x150" alt="Pizza Image">
-                    <div class="pizza-name">${pizza.name}</div>
-                    <div class="pizza-ingredients">${pizza.ingredients}</div>
-                    <button class="order-button" id="${pizza.id}" onclick="overlay.style.display='flex'; console.log('Ordering pizza: ' + '${pizza.name}')">Order Now</button>
+            // Create elements
+            var pizzaCard = document.createElement('div');
+            pizzaCard.className = 'pizza-card';
 
-                </div>
-            `);
+            var pizzaImage = document.createElement('img');
+            pizzaImage.className = 'pizza-image';
+            pizzaImage.src = pizza.src;
+            pizzaImage.alt = 'Pizza Image';
 
-            let order = document.getElementById(pizza.id);
+            var pizzaName = document.createElement('div');
+            pizzaName.className = 'pizza-name';
+            pizzaName.textContent = pizza.name;
 
-            order.addEventListener('click', () => {
-                overlay.style.display = "flex";
+            var pizzaIngredients = document.createElement('div');
+            pizzaIngredients.className = 'pizza-ingredients';
+            pizzaIngredients.textContent = pizza.ingredients;
+
+            var orderButton = document.createElement('button');
+            orderButton.className = 'order-button';
+            orderButton.id = pizza.id;
+            orderButton.textContent = 'Order Now';
+
+            // Append elements to the pizza card
+            pizzaCard.appendChild(pizzaImage);
+            pizzaCard.appendChild(pizzaName);
+            pizzaCard.appendChild(pizzaIngredients);
+            pizzaCard.appendChild(orderButton);
+
+            // Append pizza card to the body
+            document.body.appendChild(pizzaCard);
+
+            // Add event listener to the order button
+            orderButton.addEventListener('click', function () {
+                overlay.style.display = 'flex';
                 console.log('Ordering pizza: ' + pizza.name);
             });
         }
     </script>
 
-    <script>
-        // Initialize the Places Autocomplete
-        function initAutocomplete() {
-            var autocomplete = new google.maps.places.Autocomplete(
-                document.getElementById('address'),
-                { types: ['geocode'] }
-            );
-
-            autocomplete.addListener('place_changed', function() {
-                var place = autocomplete.getPlace();
-            
-                // You can access place details such as place.name, place.formatted_address, etc.
-                console.log('Selected Place:', place);
-            });
-            
-        }
-    
-        // Load the Places Autocomplete library
-        google.maps.event.addDomListener(window, 'load', initAutocomplete);
-    </script>
-    
 </body>
+
 </html>
