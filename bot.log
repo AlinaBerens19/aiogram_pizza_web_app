@@ -42,3 +42,11 @@ INFO:apscheduler.scheduler:Scheduler started
 INFO:aiogram.dispatcher:Start polling
 INFO:aiogram.dispatcher:Run polling for bot @yummi_pizza_bot id=6515055353 - 'Pizza Bot'
 INFO:aiogram.event:Update id=494919388 is handled. Duration 280 ms by bot id=6515055353
+INFO:apscheduler.scheduler:Scheduler started
+INFO:aiogram.dispatcher:Start polling
+INFO:aiogram.dispatcher:Run polling for bot @yummi_pizza_bot id=6515055353 - 'Pizza Bot'
+INFO:aiogram.event:Update id=494919389 is handled. Duration 266 ms by bot id=6515055353
+INFO:apscheduler.scheduler:Scheduler started
+INFO:aiogram.dispatcher:Start polling
+INFO:aiogram.dispatcher:Run polling for bot @yummi_pizza_bot id=6515055353 - 'Pizza Bot'
+INFO:aiogram.event:Update id=494919390 is handled. Duration 358 ms by bot id=6515055353

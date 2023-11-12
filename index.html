@@ -63,15 +63,12 @@
                 phone: phone
             }
 
-            tg.sendData(JSON.stringify(data));
-             tg.close();
-        });
-
-        function submitForm() {
-            alert('Form submitted!');
             var overlay = document.getElementById("overlay");
             overlay.style.display = "none";
-        }
+            tg.sendData(JSON.stringify(data));
+            tg.close();
+        });
+
 
         // Pizza data
         const pizzas = [
