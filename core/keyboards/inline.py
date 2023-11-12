@@ -18,7 +18,7 @@ def get_web_app():
     markup = types.ReplyKeyboardMarkup(keyboard=
         [
                 [
-                    types.KeyboardButton(text='📝 Order', web_app=WebAppInfo(url='https://chat.openai.com/'))
+                    types.KeyboardButton(text='📝 Order', web_app=WebAppInfo(url='https://alinaberens19.github.io/aiogram_pizza_web_app/'))
                 ]
         ],
         resize_keyboard=True,

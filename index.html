@@ -1,31 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
+   
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yummi Pizza</title>
     <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=API_KEY&libraries=places"></script>
+
 </head>
 <body>
     <header>
         Yummi Pizza
     </header>
 
-    <div class="pizza-card">
-        <img class="pizza-image" src="https://via.placeholder.com/300x150" alt="Pizza Image">
-        <div class="pizza-name">Margherita Pizza</div>
-        <div class="pizza-ingredients">Tomato Sauce, Mozzarella Cheese, Basil</div>
-        <button class="order-button">Order Now</button>
+    <!-- Overlay and modal for the form -->
+    <div class="overlay" id="overlay">
+        <div class="modal">
+            <span class="close-button" onclick="closeForm()">&times;</span>
+            <form id="form">
+                <input type="text" name="name" class="form-field" placeholder="Name" required>
+                <input type="text" name="address" class="form-field" placeholder="Address" required>
+                <input type="tel" name="phone" class="form-field" placeholder="Phone" required>
+                <button class="form-button" id="submit_user_data" onclick="submitForm()">Submit</button>
+            </form>
+        </div>
     </div>
 
-    <div class="pizza-card">
-        <img class="pizza-image" src="https://via.placeholder.com/300x150" alt="Pizza Image">
-        <div class="pizza-name">Pepperoni Pizza</div>
-        <div class="pizza-ingredients">Tomato Sauce, Mozzarella Cheese, Pepperoni</div>
-        <button class="order-button">Order Now</button>
-    </div>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
-    <!-- Add more pizza cards as needed -->
+    <script>
+        function closeForm() {
+            var overlay = document.getElementById("overlay");
+            overlay.style.display = "none";
+        }
 
+        document.addEventListener("DOMContentLoaded", function () {
+            var overlay = document.getElementById("overlay");
+            overlay.style.display = "flex";
+        });
+
+        function submitForm() {
+            alert('Form submitted!');
+            var overlay = document.getElementById("overlay");
+            overlay.style.display = "none";
+        }
+    </script>
+
+    <script>
+        // Pizza data
+        const pizzas = [
+            {
+                id: 'margherita',
+                name: "Margherita Pizza",
+                ingredients: "Tomato Sauce, Mozzarella Cheese, Basil"
+            },
+            {
+                id: 'pepperoni',
+                name: "Pepperoni Pizza",
+                ingredients: "Tomato Sauce, Mozzarella Cheese, Pepperoni"
+            }
+            // Add more pizzas as needed
+        ];
+
+        var tg = window.Telegram.WebApp;
+        var overlay = document.getElementById("overlay");
+
+        // Loop through pizzas and create pizza cards
+        for (const pizza of pizzas) {
+            document.write(`
+                <div class="pizza-card">
+                    <img class="pizza-image" src="https://via.placeholder.com/300x150" alt="Pizza Image">
+                    <div class="pizza-name">${pizza.name}</div>
+                    <div class="pizza-ingredients">${pizza.ingredients}</div>
+                    <button class="order-button" id="${pizza.id}" onclick="overlay.style.display='flex'; console.log('Ordering pizza: ' + '${pizza.name}')">Order Now</button>
+
+                </div>
+            `);
+
+            let order = document.getElementById(pizza.id);
+
+            order.addEventListener('click', () => {
+                overlay.style.display = "flex";
+                console.log('Ordering pizza: ' + pizza.name);
+            });
+        }
+    </script>
+
+    <script>
+        // Initialize the Places Autocomplete
+        function initAutocomplete() {
+            var autocomplete = new google.maps.places.Autocomplete(
+                document.getElementById('address'),
+                { types: ['geocode'] }
+            );
+
+            autocomplete.addListener('place_changed', function() {
+                var place = autocomplete.getPlace();
+            
+                // You can access place details such as place.name, place.formatted_address, etc.
+                console.log('Selected Place:', place);
+            });
+            
+        }
+    
+        // Load the Places Autocomplete library
+        google.maps.event.addDomListener(window, 'load', initAutocomplete);
+    </script>
+    
 </body>
 </html>
