@@ -18,8 +18,8 @@
         <div class="modal">
             <span class="close-button" onclick="closeForm()">&times;</span>
             <form id="form">
-                <input type="text" name="name" class="form-field" placeholder="Name" required>
-                <input type="text" name="address" class="form-field" placeholder="Address" required>
+                <input type="text" name="name" class="form-field" placeholder="Name" id="name" required>
+                <input type="text" name="address" class="form-field" placeholder="Address" id="address" required>
                 <input type="tel" name="phone" class="form-field" placeholder="Phone" required>
                 <button class="form-button" id="submit_user_data" onclick="submitForm()">Submit</button>
             </form>
@@ -36,7 +36,9 @@
 
         document.addEventListener("DOMContentLoaded", function () {
             var overlay = document.getElementById("overlay");
-            overlay.style.display = "flex";
+            document.getElementById("name").value = tg.initDataUnsafe.user.first_name + " " + tg.initDataUnsafe.user.last_name;
+            document.getElementById("phone").value = tg.initDataUnsafe.user.phone_number;
+            <!-- overlay.style.display = "flex"; -->
         });
 
         function submitForm() {
@@ -103,6 +105,7 @@
             orderButton.addEventListener('click', function () {
                 overlay.style.display = 'flex';
                 console.log('Ordering pizza: ' + pizza.name);
+
             });
         }
     </script>
