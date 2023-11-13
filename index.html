@@ -21,7 +21,7 @@
                 <input type="text" name="name" class="form-field" placeholder="Name" id="name" required>
                 <input type="text" name="address" class="form-field" placeholder="Address" id="address" required>
                 <input type="tel" name="phone" class="form-field" placeholder="Phone" required>
-                <button class="form-button" id="submit_user_data" onclick="submitForm()">Submit</button>
+                <button class="form-button" id="submit_user_data">Submit</button>
             </form>
         </div>
     </div>
@@ -34,17 +34,11 @@
         tg.expand();
 
         let submit_data = document.getElementById('submit_user_data');
+        var overlay = document.getElementById("overlay");
 
         function closeForm() {
-            var overlay = document.getElementById("overlay");
             overlay.style.display = "none";
         }
-
-
-        document.addEventListener("DOMContentLoaded", function () {
-            var overlay = document.getElementById("overlay");
-            document.getElementById("name").value = tg.initDataUnsafe.user.first_name + " " + tg.initDataUnsafe.user.last_name;
-        });
 
         submit_data.addEventListener('click', function () {
             document.getElementById("error").value = "";
@@ -52,7 +46,7 @@
             var address = document.getElementById("address").value;
             var phone = document.getElementById("phone").value;
             if (name == "" || address == "" || phone == "") {
-                document.getElementById("error").value = "Please fill all the fields";
+                document.getElementById("error").innerText = "Please fill all the fields";
                 return;
             }
             var message = "Name: " + name + "\n" + "Address: " + address + "\n" + "Phone: " + phone;
@@ -63,10 +57,14 @@
                 phone: phone
             }
 
-            var overlay = document.getElementById("overlay");
-            overlay.style.display = "none";
-            tg.sendData(JSON.stringify(data));
+            
+            try {
+                tg.post({ method: 'sendMessage', params: { text: message } });
+            } catch (error) {
+                console.error('Error:', error);
+            }
             tg.close();
+            
         });
 
 

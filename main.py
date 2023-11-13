@@ -79,6 +79,7 @@ async def start():
         dp.shutdown.register(stop_bot)
 
         dp.include_router(form_router)
+        print("form_router included in the dispatcher")
     except Exception as err:
         logging.error(err)
 
@@ -93,4 +94,5 @@ async def start():
 
 if __name__ == '__main__':
     logging.basicConfig(filename='bot.log', level=logging.INFO)
-    asyncio.run(start())
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(start())

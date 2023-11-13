@@ -1,4 +1,4 @@
-from aiogram.utils.keyboard import InlineKeyboardBuilder, InlineKeyboardButton, InlineKeyboardMarkup
+from aiogram.utils.keyboard import InlineKeyboardBuilder, InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardBuilder, KeyboardButton
 from aiogram import types
 from aiogram.types.web_app_info import WebAppInfo
 
@@ -22,15 +22,14 @@ def get_the_menu(id: str = None) -> InlineKeyboardMarkup:
 
 
 def get_web_app():
-    markup = types.ReplyKeyboardMarkup(keyboard=
-        [
-                [
-                    types.KeyboardButton(text='📝 Order', web_app=WebAppInfo(url='https://alinaberens19.github.io/aiogram_pizza_web_app/'))
-                ]
-        ],
-        resize_keyboard=True,
-        one_time_keyboard=True,
-        input_field_placeholder='📝 Order',
-        selective=True
-    )
+    keyboard_builder = ReplyKeyboardBuilder()
+    keyboard_builder.add(KeyboardButton(text='Order', web_app=WebAppInfo(url='https://alinaberens19.github.io/aiogram_pizza_web_app/')))
+    keyboard_builder.adjust()
+    markup = keyboard_builder.as_markup()
+    markup.resize_keyboard = True
+    markup.one_time_keyboard = True
+    markup.selective = True
+    markup.input_field_placeholder = 'Order'
+
     return markup
+    

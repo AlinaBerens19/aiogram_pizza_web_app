@@ -3,9 +3,7 @@ from aiogram.fsm.state import State, StatesGroup
 
 
 class State(StatesGroup):
-    initial = State()
-    menu = State()
-    choose_size = State()
+    form = State()
     choose_dough = State()
     choose_sauce = State()
     choose_cheese = State()
